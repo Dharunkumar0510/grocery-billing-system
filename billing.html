@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Billing System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+<h2>🛒 Grocery Billing System</h2>
+
+<input type="text" id="product" placeholder="Product Name">
+<input type="number" id="qty" placeholder="Quantity">
+<button onclick="addItem()">Add</button>
+
+<table id="billTable">
+<tr>
+<th>Product</th><th>Qty</th><th>Price</th><th>Total</th>
+</tr>
+</table>
+
+<h3>Total: ₹ <span id="total">0</span></h3>
+
+<button onclick="generateBill()">Generate Bill</button>
+
+<div id="qrSection" style="display:none;">
+    <h3>Scan & Pay</h3>
+    <img src="qr.png" width="200">
+</div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
