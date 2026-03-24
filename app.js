@@ -72,3 +72,28 @@ function generateBill() {
     newWin.document.write(billContent);
     newWin.print();
 }
+
+function showSuggestions() {
+    let input = document.getElementById("search").value.toLowerCase();
+    let box = document.getElementById("suggestions");
+
+    box.innerHTML = "";
+
+    if (input === "") return;
+
+    let filtered = products.filter(p =>
+        p.name.toLowerCase().includes(input)
+    );
+
+    filtered.forEach(p => {
+        let div = document.createElement("div");
+        div.innerText = p.name;
+
+        div.onclick = () => {
+            document.getElementById("search").value = p.name;
+            box.innerHTML = "";
+        };
+
+        box.appendChild(div);
+    });
+}
