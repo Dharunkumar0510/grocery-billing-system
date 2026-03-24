@@ -55,6 +55,20 @@ function addToCart() {
 }
 
 function generateBill() {
+
     document.getElementById("qr").style.display = "block";
-    setTimeout(() => window.print(), 1000);
+
+    let billContent = `
+    <h2 style="text-align:center;">SENTHIL STORE</h2>
+    <p style="text-align:center;">264E, Thiruvalluvar Salai, Pothanur</p>
+    <hr>
+    ${document.getElementById("bill").outerHTML}
+    <h3>Total: ₹ ${total}</h3>
+    <p>Thank you! Visit again 🙏</p>
+    <img src="qr.png" width="150">
+    `;
+
+    let newWin = window.open("");
+    newWin.document.write(billContent);
+    newWin.print();
 }
