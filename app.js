@@ -24,7 +24,10 @@ function addProduct() {
 }
 
 function findProduct(name) {
-    return products.find(p => p.name.toLowerCase() === name.toLowerCase());
+    return products.find(p =>
+        p.name.toLowerCase() === name.toLowerCase()
+    );
+};
 }
 
 function addToCart() {
@@ -72,6 +75,15 @@ function generateBill() {
     newWin.document.write(billContent);
     newWin.print();
 }
+document.getElementById("search").addEventListener("keydown", function(e) {
+    if (e.key === "Enter") {
+        let first = document.querySelector("#suggestions div");
+        if (first) {
+            document.getElementById("search").value = first.innerText;
+            document.getElementById("suggestions").innerHTML = "";
+        }
+    }
+});
 
 function showSuggestions() {
     let input = document.getElementById("search").value.toLowerCase();
