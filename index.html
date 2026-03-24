@@ -38,6 +38,8 @@
     <h2 class="total">Total: ₹ <span id="total">0</span></h2>
 
     <button class="bill-btn" onclick="generateBill()">Generate Bill</button>
+    <input id="search" placeholder="Product name" onkeyup="showSuggestions()">
+<div id="suggestions" class="suggestions-box"></div>
 
     <!-- QR -->
     <div id="qr" style="display:none;">
