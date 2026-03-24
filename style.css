@@ -3,6 +3,9 @@ body {
     background: linear-gradient(to right, #e8f5e9, #ffffff);
     text-align: center;
 }
+body {
+    font-family: 'Noto Sans Tamil', sans-serif;
+}
 
 .container {
     width: 80%;
