@@ -51,6 +51,23 @@ table {
     margin-top: 15px;
 }
 
+.suggestions-box {
+    width: 200px;
+    margin: auto;
+    background: white;
+    border: 1px solid #ccc;
+    position: absolute;
+    z-index: 1000;
+}
+
+.suggestions-box div {
+    padding: 8px;
+    cursor: pointer;
+}
+
+.suggestions-box div:hover {
+    background: #e0f2f1;
+}
 th {
     background: green;
     color: white;
