@@ -1,34 +1,47 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Grocery Billing</title>
+    <title>Senthil Store Billing</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h1>🛒 Grocery Billing System</h1>
+<div class="container">
 
-<h3>Add Product</h3>
-<input id="pname" placeholder="Product">
-<input id="pprice" type="number" placeholder="Price">
-<button onclick="addProduct()">Add Product</button>
+    <!-- SHOP HEADER -->
+    <div class="header">
+        <h1>SENTHIL STORE</h1>
+        <p class="address">264E, Thiruvalluvar Salai, Pothanur</p>
+    </div>
 
-<h3>Billing</h3>
-<input id="search" placeholder="Product name">
-<input id="qty" type="number" placeholder="Qty">
-<button onclick="addToCart()">Add</button>
+    <!-- ADD PRODUCT -->
+    <h3>➕ Add Product</h3>
+    <input id="pname" placeholder="Product">
+    <input id="pprice" type="number" placeholder="Price">
+    <button onclick="addProduct()">Add</button>
 
-<table id="bill">
-<tr><th>Item</th><th>Qty</th><th>Price</th><th>Total</th></tr>
-</table>
+    <!-- BILLING -->
+    <h3>🧾 Billing</h3>
+    <input id="search" placeholder="Product name">
+    <input id="qty" type="number" placeholder="Qty">
+    <button onclick="addToCart()">Add</button>
 
-<h2>Total: ₹ <span id="total">0</span></h2>
+    <table id="bill">
+        <tr>
+            <th>Item</th><th>Qty</th><th>Price</th><th>Total</th>
+        </tr>
+    </table>
 
-<button onclick="generateBill()">Generate Bill</button>
+    <h2 class="total">Total: ₹ <span id="total">0</span></h2>
 
-<div id="qr" style="display:none;">
-    <h3>Scan & Pay</h3>
-    <img src="qr.png" width="200">
+    <button class="bill-btn" onclick="generateBill()">Generate Bill</button>
+
+    <!-- QR -->
+    <div id="qr" style="display:none;">
+        <h3>📱 Scan & Pay</h3>
+        <img src="qr.png" width="200">
+    </div>
+
 </div>
 
 <script src="app.js"></script>
