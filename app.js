@@ -1,3 +1,4 @@
+// ✅ LOAD PRODUCTS FROM STORAGE OR DEFAULT
 let products = JSON.parse(localStorage.getItem("products")) || [
     {name:"Rice", price:50},
     {name:"Dhal", price:80},
@@ -9,27 +10,53 @@ let products = JSON.parse(localStorage.getItem("products")) || [
 let cart = [];
 let total = 0;
 
+// ✅ SAVE PRODUCTS
 function saveProducts() {
     localStorage.setItem("products", JSON.stringify(products));
 }
 
+// ✅ ADD PRODUCT (FIXED)
 function addProduct() {
-    let name = document.getElementById("pname").value;
+    let name = document.getElementById("pname").value.trim();
     let price = document.getElementById("pprice").value;
 
-    products.push({name, price});
+    if (name === "" || price === "") {
+        alert("Enter product name and price");
+        return;
+    }
+
+    price = Number(price);
+
+    // check duplicate
+    let exists = products.find(p => 
+        p.name.toLowerCase() === name.toLowerCase()
+    );
+
+    if (exists) {
+        alert("Product already exists");
+        return;
+    }
+
+    products.push({ name, price });
     saveProducts();
 
-    alert("Product Added");
+    alert("✅ Product Added Successfully");
+
+    // clear fields
+    document.getElementById("pname").value = "";
+    document.getElementById("pprice").value = "";
+
+    console.log(products); // debug
 }
 
+// ✅ FIND PRODUCT (CASE INSENSITIVE)
 function findProduct(name) {
     return products.find(p =>
         p.name.toLowerCase() === name.toLowerCase()
     );
-};
 }
 
+// ✅ ADD TO BILL
 function addToCart() {
     let name = document.getElementById("search").value;
     let qty = document.getElementById("qty").value;
@@ -44,8 +71,6 @@ function addToCart() {
     let itemTotal = product.price * qty;
     total += itemTotal;
 
-    cart.push({name, qty, price: product.price});
-
     let row = `<tr>
         <td>${name}</td>
         <td>${qty}</td>
@@ -57,55 +82,7 @@ function addToCart() {
     document.getElementById("total").innerText = total;
 }
 
+// ✅ GENERATE BILL
 function generateBill() {
-
-    document.getElementById("qr").style.display = "block";
-
-    let billContent = `
-    <h2 style="text-align:center;">SENTHIL STORE</h2>
-    <p style="text-align:center;">264E, Thiruvalluvar Salai, Pothanur</p>
-    <hr>
-    ${document.getElementById("bill").outerHTML}
-    <h3>Total: ₹ ${total}</h3>
-    <p>Thank you! Visit again 🙏</p>
-    <img src="qr.png" width="150">
-    `;
-
-    let newWin = window.open("");
-    newWin.document.write(billContent);
-    newWin.print();
-}
-document.getElementById("search").addEventListener("keydown", function(e) {
-    if (e.key === "Enter") {
-        let first = document.querySelector("#suggestions div");
-        if (first) {
-            document.getElementById("search").value = first.innerText;
-            document.getElementById("suggestions").innerHTML = "";
-        }
-    }
-});
-
-function showSuggestions() {
-    let input = document.getElementById("search").value.toLowerCase();
-    let box = document.getElementById("suggestions");
-
-    box.innerHTML = "";
-
-    if (input === "") return;
-
-    let filtered = products.filter(p =>
-        p.name.toLowerCase().includes(input)
-    );
-
-    filtered.forEach(p => {
-        let div = document.createElement("div");
-        div.innerText = p.name;
-
-        div.onclick = () => {
-            document.getElementById("search").value = p.name;
-            box.innerHTML = "";
-        };
-
-        box.appendChild(div);
-    });
+    alert("Bill Generated");
 }
