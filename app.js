@@ -1,4 +1,4 @@
-// ✅ LOAD PRODUCTS FROM STORAGE OR DEFAULT
+// ✅ LOAD PRODUCTS
 let products = JSON.parse(localStorage.getItem("products")) || [
     {name:"Rice", price:50},
     {name:"Dhal", price:80},
@@ -15,7 +15,7 @@ function saveProducts() {
     localStorage.setItem("products", JSON.stringify(products));
 }
 
-// ✅ ADD PRODUCT (FIXED)
+// ✅ ADD PRODUCT
 function addProduct() {
     let name = document.getElementById("pname").value.trim();
     let price = document.getElementById("pprice").value;
@@ -27,7 +27,6 @@ function addProduct() {
 
     price = Number(price);
 
-    // check duplicate
     let exists = products.find(p => 
         p.name.toLowerCase() === name.toLowerCase()
     );
@@ -42,14 +41,11 @@ function addProduct() {
 
     alert("✅ Product Added Successfully");
 
-    // clear fields
     document.getElementById("pname").value = "";
     document.getElementById("pprice").value = "";
-
-    console.log(products); // debug
 }
 
-// ✅ FIND PRODUCT (CASE INSENSITIVE)
+// ✅ FIND PRODUCT
 function findProduct(name) {
     return products.find(p =>
         p.name.toLowerCase() === name.toLowerCase()
